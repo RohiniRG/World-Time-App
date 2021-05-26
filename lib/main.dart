@@ -12,7 +12,7 @@ void main() {
       // value is functions which takes context object as argument,
       // which descirbes where in the widget tree we are
       '/home': (context) => Home(),
-      '/location': (context) => ChoooseLocation()
+      '/choose_loc': (context) => ChoooseLocation()
     },
   ));
 }

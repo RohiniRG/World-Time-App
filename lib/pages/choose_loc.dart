@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:world_time/services/world_time.dart';
 
 class ChoooseLocation extends StatefulWidget {
   @override
@@ -6,27 +7,29 @@ class ChoooseLocation extends StatefulWidget {
 }
 
 class _ChoooseLocationState extends State<ChoooseLocation> {
-  void getData() async {
-    // Simulating a network request from a database
+  List<WorldTime> locations = [
+    WorldTime(url: 'Europe/London', location: 'London', flag: 'uk.png'),
+    WorldTime(url: 'Asia/India', location: 'Kolkata', flag: 'india.png'),
+    WorldTime(url: 'Europe/Berlin', location: 'Berlin', flag: 'germany.png'),
+    WorldTime(url: 'Europe/Athens', location: 'Athens', flag: 'greece.png'),
+    WorldTime(url: 'Africa/Cairo', location: 'Cairo', flag: 'egypt.png'),
+    WorldTime(url: 'Africa/Nairobi', location: 'Nairobi', flag: 'kenya.png'),
+    WorldTime(url: 'America/Chicago', location: 'Chicago', flag: 'usa.png'),
+    WorldTime(url: 'America/New_York', location: 'New York', flag: 'usa.png'),
+    WorldTime(url: 'Asia/Seoul', location: 'Seoul', flag: 'south_korea.png'),
+    WorldTime(url: 'Asia/Jakarta', location: 'Jakarta', flag: 'indonesia.png'),
+  ];
 
-    String username = await Future.delayed(Duration(seconds: 3), () {
-      return 'DELAYYY! got info tho';
+  void updateTime(index) async {
+    WorldTime instance = locations[index];
+    await instance.getTime();
+    // navigate to homescreen
+    Navigator.pop(context, {
+      'location': instance.location,
+      'flag': instance.flag,
+      'time': instance.time,
+      'isDaytime': instance.isDaytime,
     });
-
-    // print('BLAH'); // Doesn't wait for the the future.delayed part to get printed
-
-    // Similating request to get more info
-    String bio = await Future.delayed(Duration(seconds: 2), () {
-      return 'INFO INFO!';
-    });
-
-    print('$username + $bio');
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    getData();
   }
 
   @override
@@ -39,14 +42,24 @@ class _ChoooseLocationState extends State<ChoooseLocation> {
         centerTitle: true,
         elevation: 0,
       ),
-      body: RaisedButton(
-        onPressed: () {
-          setState(() {
-            // causes rebuild
-          });
-        },
-        // child: Text('Count is $count'),
-      ),
+      body: ListView.builder(
+          itemCount: locations.length,
+          itemBuilder: (context, index) => Padding(
+                padding:
+                    const EdgeInsets.symmetric(vertical: 1.0, horizontal: 4.0),
+                child: Card(
+                  child: ListTile(
+                    onTap: () {
+                      updateTime(index);
+                    },
+                    title: Text(locations[index].location),
+                    leading: CircleAvatar(
+                      backgroundImage:
+                          AssetImage('assets/${locations[index].flag}'),
+                    ),
+                  ),
+                ),
+              )),
     );
   }
 }
