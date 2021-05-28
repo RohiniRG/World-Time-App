@@ -11,6 +11,8 @@
 ## Day time home page UI
 ![Image](https://i.imgur.com/NSsISxy.png)
 
+#
+
 ## Night time home page UI
 ![Image](https://i.imgur.com/qeb8bCP.png)
 
