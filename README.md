@@ -1,20 +1,15 @@
 # <b>World Time App in FLUTTER </b>
 
-- My first kinda big Flutter project. It is a revision of all basics and some advanced concepts of Flutter I've learnt so far.
+- This Flutter project encompasses all basics and advanced concepts of Flutter.
 
 - This app shows the current time of many time zones accros the world in one single user-friendly interface.
 
-- <b>It is still a work-in-progress</b>
+- This app uses an API to get the time of the desired location. This app thus integrates async processes as well to get the best results.
+
+- Users are also offered a functionality to edit the location, which allows them to change the current location to a wide range of options offered. The cities are displayed using a List View.
 
 # Working screenshots
 
-## Day time home page UI
-![Image](https://i.imgur.com/NSsISxy.png)
-
-#
-
-## Night time home page UI
-![Image](https://i.imgur.com/qeb8bCP.png)
-
-# Reference
-[Tutorial](https://www.youtube.com/watch?v=1ukSR1GRtMU&list=PL4cUxeGkcC9jLYyp2Aoh6hcWuxFDX6PBJ)
+| Day time home page UI | Night time home page UI | 
+|-----------------------|-------------------------|
+![Image](https://i.imgur.com/qPnZHGi.png) | ![Image](https://i.imgur.com/RDQh1qo.png)
